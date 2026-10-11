@@ -1,0 +1,24 @@
+Source: Tennessee Eastman Process reference README
+URL: https://huggingface.co/spaces/jkitchin/tennessee-eastman-process/blob/main/data/README.md
+
+The Tennessee Eastman Process (TEP) is a simulated
+industrial process used in process monitoring and
+fault detection research.
+
+The reference dataset contains 52 variables per
+observation. The first 41 variables are measurements
+(XMEAS 1-41). The remaining 11 variables are
+manipulated variables (XMV 1-11).
+
+The sampling interval is 180 seconds, equivalent
+to three minutes.
+
+The dataset contains normal-operation files and
+fault-scenario files. Training fault files contain
+480 samples, while test fault files contain
+960 samples according to the reference README.
+
+A fault ID identifies a simulated fault scenario.
+IDV0 is used in this project to represent normal
+operation; IDV1 through IDV21 represent fault
+scenarios in the available dataset.

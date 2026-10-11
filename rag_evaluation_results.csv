@@ -1,0 +1,221 @@
+﻿fault_id,question,expected_terms,answer_known,baseline_answer,baseline_latency_seconds,baseline_keyword_match,rag_answer,rag_latency_seconds,rag_keyword_or_abstention_match,evidence_keyword_match,retrieved_sources,retrieved_text,retrieval_hit,answer_correctness_match,faithfulness_proxy
+1,What variable and fault type are listed for IDV1?,a/c feed ratio | step,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV1 in that system. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide the variable and fault type listed for IDV1. If you have access to the relevant documentation, you can provide that information, and I would be happy to discuss it further.",3.031,0,"IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.",2.654,1,1,tep_faults.txt; tep_overview.txt,"IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.
+A fault ID identifies a simulated fault scenario.
+IDV0 is used in this project to represent normal
+operation; IDV1 through IDV21 represent fault
+scenarios in the available dataset.
+IDV3
+Variable: D feed temperature in Stream 2.
+Fault type: step.",1,1,1
+2,What variable and fault type are listed for IDV2?,b composition | step,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV2 variable and fault type. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide the information you're asking for. If you have access to the relevant documentation, you should be able to find the specific variable and fault type listed for IDV2.",3.068,0,"Variable: B composition, with A/C ratio constant in Stream 4.
+Fault type: step.
+
+Source: tep_faults.txt",2.677,1,1,tep_faults.txt,"IDV2
+Variable: B composition, with A/C ratio constant in Stream 4.
+Fault type: step.
+IDV3
+Variable: D feed temperature in Stream 2.
+Fault type: step.
+IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.",1,1,1
+3,What variable and fault type are listed for IDV3?,d feed temperature | step,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV3 variable and fault type. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide the information you're asking for. If you have access to the relevant documentation, you should be able to find the variable and fault type listed for IDV3.",2.826,0,"IDV3
+Variable: D feed temperature in Stream 2
+Fault type: step.
+
+Source: tep_faults.txt",2.517,1,1,tep_faults.txt,"IDV3
+Variable: D feed temperature in Stream 2.
+Fault type: step.
+IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.
+IDV13
+Variable: Reaction kinetics.
+Fault type: slow drift.",1,1,1
+4,What variable and fault type are listed for IDV4?,reactor cooling-water inlet temperature | step,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV4 variable and fault type. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide the information you're asking for. If you have access to the relevant documentation, you should be able to find the specific variable and fault type listed for IDV4.",3.053,0,"IDV4
+Variable: Reactor cooling-water inlet temperature
+Fault type: step.
+
+Source: tep_faults.txt",2.386,1,1,tep_faults.txt,"IDV4
+Variable: Reactor cooling-water inlet temperature.
+Fault type: step.
+IDV8
+Variable: A, B and C feed composition in Stream 4.
+Fault type: random.
+IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.",1,1,1
+5,What variable and fault type are listed for IDV5?,condenser cooling-water inlet temperature | step,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV5 variable and fault type. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide the information you're asking for. If you have access to the relevant documentation, you should be able to find the information you need there.",2.761,0,"IDV5
+Variable: Condenser cooling-water inlet temperature.
+Fault type: step.",2.57,1,1,tep_faults.txt,"IDV5
+Variable: Condenser cooling-water inlet temperature.
+Fault type: step.
+IDV3
+Variable: D feed temperature in Stream 2.
+Fault type: step.
+IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.",1,1,1
+6,What variable and fault type are listed for IDV6?,a feed loss | step,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV6 variable and fault type. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide the information you're asking for. If you have access to the relevant documentation, you should be able to find the variable and fault type listed for IDV6.",2.988,0,"Variable: A feed loss in Stream 1.
+Fault type: step.",2.522,1,1,tep_faults.txt,"IDV6
+Variable: A feed loss in Stream 1.
+Fault type: step.
+IDV3
+Variable: D feed temperature in Stream 2.
+Fault type: step.
+IDV8
+Variable: A, B and C feed composition in Stream 4.
+Fault type: random.",1,1,1
+7,What variable and fault type are listed for IDV7?,c header pressure loss | step,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV7 variable and fault type. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide the information you're asking for. If you have access to the relevant documentation, you should be able to find the information you need there.",3.085,0,"IDV7
+Variable: C header pressure loss in Stream 4
+Fault type: step.
+
+Source: tep_faults.txt",2.565,1,1,tep_faults.txt,"IDV7
+Variable: C header pressure loss in Stream 4.
+Fault type: step.
+IDV17
+Physical fault type: not specified in the current project reference.
+IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.",1,1,1
+8,What variable and fault type are listed for IDV8?,feed composition | random,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV8 variable and fault type. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide the information you're asking for. If you have access to the relevant documentation, you should be able to find the variable and fault type listed for IDV8.",3.047,0,"IDV8
+Variable: A, B and C feed composition in Stream 4.
+Fault type: random.
+
+Source: tep_faults.txt",2.748,1,1,tep_faults.txt,"IDV8
+Variable: A, B and C feed composition in Stream 4.
+Fault type: random.
+IDV18
+Physical fault type: not specified in the current project reference.
+IDV3
+Variable: D feed temperature in Stream 2.
+Fault type: step.",1,1,1
+9,What variable and fault type are listed for IDV9?,d feed temperature | random,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV9 in that system. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide information about the variable and fault type listed for IDV9.",2.826,0,"IDV9
+Variable: D feed temperature in Stream 2
+Fault type: random.
+
+Source: tep_faults.txt",2.6,1,1,tep_faults.txt,"IDV9
+Variable: D feed temperature in Stream 2.
+Fault type: random.
+IDV3
+Variable: D feed temperature in Stream 2.
+Fault type: step.
+IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.",1,1,1
+10,What variable and fault type are listed for IDV10?,c feed temperature | random,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV10 variable and fault type. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide the variable and fault type for IDV10. If you have access to the relevant documentation, you can provide that information.",3.034,0,"IDV10
+Variable: C feed temperature in Stream 4
+Fault type: random.
+
+Source: tep_faults.txt",2.518,1,1,tep_faults.txt,"IDV10
+Variable: C feed temperature in Stream 4.
+Fault type: random.
+IDV3
+Variable: D feed temperature in Stream 2.
+Fault type: step.
+IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.",1,1,1
+11,What variable and fault type are listed for IDV11?,reactor cooling-water inlet temperature | random,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV11 variable and fault type. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide the variable and fault type for IDV11. If you have access to the relevant documentation, you can provide that information for a more accurate response.",3.035,0,"IDV11
+Variable: Reactor cooling-water inlet temperature.
+Fault type: random.",2.623,1,1,tep_faults.txt,"IDV11
+Variable: Reactor cooling-water inlet temperature.
+Fault type: random.
+IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.
+IDV3
+Variable: D feed temperature in Stream 2.
+Fault type: step.",1,1,1
+12,What variable and fault type are listed for IDV12?,condenser cooling-water inlet temperature | random,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV12 variable and fault type. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide the variable and fault type for IDV12. If you have access to the relevant documentation, you can provide that information.",3.05,0,"IDV12
+Variable: Condenser cooling-water inlet temperature.
+Fault type: random.",2.519,1,1,tep_faults.txt,"IDV12
+Variable: Condenser cooling-water inlet temperature.
+Fault type: random.
+IDV2
+Variable: B composition, with A/C ratio constant in Stream 4.
+Fault type: step.
+IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.",1,1,1
+13,What variable and fault type are listed for IDV13?,reaction kinetics | slow drift,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV13 variable and fault type. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide the variable and fault type for IDV13. If you have access to the relevant documentation, you can provide that information.",2.992,0,"IDV13
+Variable: Reaction kinetics.
+Fault type: slow drift.",2.522,1,1,tep_faults.txt,"IDV13
+Variable: Reaction kinetics.
+Fault type: slow drift.
+IDV3
+Variable: D feed temperature in Stream 2.
+Fault type: step.
+IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.",1,1,1
+14,What variable and fault type are listed for IDV14?,reactor cooling-water valve | sticking,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV14 variable and fault type. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide the information you're asking for. If you have access to the relevant documentation, you should be able to find the variable and fault type listed for IDV14.",3.1,0,"IDV14
+Variable: Reactor cooling-water valve.
+Fault type: sticking.",2.457,1,1,tep_faults.txt,"IDV14
+Variable: Reactor cooling-water valve.
+Fault type: sticking.
+IDV4
+Variable: Reactor cooling-water inlet temperature.
+Fault type: step.
+IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.",1,1,1
+15,What variable and fault type are listed for IDV15?,condenser cooling-water valve | sticking,True,"I do not have specific knowledge about the Tennessee Eastman Process or any particular IDV15 variable and fault type. Without access to the specific documentation or records related to the Tennessee Eastman Process, I cannot provide the variable and fault type for IDV15. If you have access to the relevant documentation, you can provide that information.",3.027,0,"IDV15
+Variable: Condenser cooling-water valve.
+Fault type: sticking.",2.538,1,1,tep_faults.txt,"IDV15
+Variable: Condenser cooling-water valve.
+Fault type: sticking.
+IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.
+IDV3
+Variable: D feed temperature in Stream 2.
+Fault type: step.",1,1,1
+16,Does the current reference specify the physical fault type for IDV16?,unknown,False,"I do not have access to the current reference for the Tennessee Eastman Process or specific details about the IDV16 ID. Without this specific information, I cannot determine whether the current reference specifies the physical fault type for IDV16.",2.821,,The current reference does not specify the physical fault type for IDV16.,2.452,1,1,tep_faults.txt,"IDV16
+Physical fault type: not specified in the current project reference.
+IDV17
+Physical fault type: not specified in the current project reference.
+IDV18
+Physical fault type: not specified in the current project reference.",1,1,1
+17,Does the current reference specify the physical fault type for IDV17?,unknown,False,"I do not have information about the current reference for the physical fault type for IDV17. To answer this question accurately, I would need to consult the specific documentation or records related to the Tennessee Eastman Process system and its IDV17 control valve. Without direct access to such information, I cannot provide a definitive answer.",3.028,,The current reference does not specify the physical fault type for IDV17.,2.513,1,1,tep_faults.txt,"IDV17
+Physical fault type: not specified in the current project reference.
+IDV18
+Physical fault type: not specified in the current project reference.
+IDV19
+Physical fault type: not specified in the current project reference.",1,1,1
+18,Does the current reference specify the physical fault type for IDV18?,unknown,False,"I do not have access to the current reference for the Tennessee Eastman Process or specific details about IDV18. Without this information, I cannot determine whether the current reference specifies the physical fault type for IDV18.",2.759,,The current reference does not specify the physical fault type for IDV18.,2.539,1,1,tep_faults.txt,"IDV18
+Physical fault type: not specified in the current project reference.
+IDV19
+Physical fault type: not specified in the current project reference.
+IDV17
+Physical fault type: not specified in the current project reference.",1,1,1
+19,Does the current reference specify the physical fault type for IDV19?,unknown,False,"I do not have access to the current reference for the Tennessee Eastman Process or specific details about IDV19. Without this information, I cannot determine whether the current reference specifies the physical fault type for IDV19.",2.737,,"The current reference does not specify the physical fault type for IDV19.
+
+Source: tep_faults.txt
+IDV19
+Physical fault type: not specified in the current project reference.",2.658,1,1,tep_faults.txt,"IDV19
+Physical fault type: not specified in the current project reference.
+IDV18
+Physical fault type: not specified in the current project reference.
+IDV20
+Physical fault type: not specified in the current project reference.",1,1,1
+20,Does the current reference specify the physical fault type for IDV20?,unknown,False,"I do not have enough information to determine if the current reference specifies the physical fault type for IDV20. To answer this question accurately, I would need to consult the specific documentation or reference material related to the Tennessee Eastman Process system, particularly for the IDV20 unit. Without having access to that information, I cannot provide a definitive answer.",3.061,,The current reference does not specify the physical fault type for IDV20.,2.437,1,1,tep_faults.txt,"IDV20
+Physical fault type: not specified in the current project reference.
+IDV19
+Physical fault type: not specified in the current project reference.
+IDV18
+Physical fault type: not specified in the current project reference.",1,1,1
+21,"What variable is listed for IDV21, and is its fault type specified?",valve position constant | not specify,True,"I do not have specific information about the fault types or variables listed for IDV21 from Tennessee Eastman Process simulations or models. Without direct access to the Tennessee Eastman Process model or data, I cannot provide details about the fault types or variable listings for IDV21. If you have access to the specific model or documentation, you could determine this information.",3.108,0,"The variable listed for IDV21 is ""Valve position constant in Stream 4."" The fault type for this variable is not specified in the current project reference.",2.62,1,1,tep_faults.txt; tep_overview.txt,"IDV21
+Variable description: Valve position constant in Stream 4.
+Fault type: not specified in the current project reference.
+A fault ID identifies a simulated fault scenario.
+IDV0 is used in this project to represent normal
+operation; IDV1 through IDV21 represent fault
+scenarios in the available dataset.
+IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.",1,1,1

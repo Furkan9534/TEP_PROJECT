@@ -1,0 +1,89 @@
+Tennessee Eastman Process (TEP) Fault Reference
+
+Purpose:
+This document records the fault descriptions available in the current project reference. It distinguishes the described process variable from the fault type. It does not infer missing physical fault causes.
+
+IDV1
+Variable: A/C feed ratio, with B composition constant in Stream 4.
+Fault type: step.
+
+IDV2
+Variable: B composition, with A/C ratio constant in Stream 4.
+Fault type: step.
+
+IDV3
+Variable: D feed temperature in Stream 2.
+Fault type: step.
+
+IDV4
+Variable: Reactor cooling-water inlet temperature.
+Fault type: step.
+
+IDV5
+Variable: Condenser cooling-water inlet temperature.
+Fault type: step.
+
+IDV6
+Variable: A feed loss in Stream 1.
+Fault type: step.
+
+IDV7
+Variable: C header pressure loss in Stream 4.
+Fault type: step.
+
+IDV8
+Variable: A, B and C feed composition in Stream 4.
+Fault type: random.
+
+IDV9
+Variable: D feed temperature in Stream 2.
+Fault type: random.
+
+IDV10
+Variable: C feed temperature in Stream 4.
+Fault type: random.
+
+IDV11
+Variable: Reactor cooling-water inlet temperature.
+Fault type: random.
+
+IDV12
+Variable: Condenser cooling-water inlet temperature.
+Fault type: random.
+
+IDV13
+Variable: Reaction kinetics.
+Fault type: slow drift.
+
+IDV14
+Variable: Reactor cooling-water valve.
+Fault type: sticking.
+
+IDV15
+Variable: Condenser cooling-water valve.
+Fault type: sticking.
+
+IDV16
+Physical fault type: not specified in the current project reference.
+
+IDV17
+Physical fault type: not specified in the current project reference.
+
+IDV18
+Physical fault type: not specified in the current project reference.
+
+IDV19
+Physical fault type: not specified in the current project reference.
+
+IDV20
+Physical fault type: not specified in the current project reference.
+
+IDV21
+Variable description: Valve position constant in Stream 4.
+Fault type: not specified in the current project reference.
+
+Important:
+“Not specified” means the current project reference does not provide the information. It does not mean that the physical fault itself is unknown or nonexistent.
+
+Source note:
+This is a normalized working reference based on the descriptions currently recorded in the project's starter knowledge base. It must be verified against an authoritative TEP reference before being treated as a final scientific source.
