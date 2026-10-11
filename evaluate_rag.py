@@ -5,6 +5,7 @@ import re
 import time
 import requests
 import numpy as np
+from sentence_transformers import CrossEncoder
 
 # ---------------- Configuration ----------------
 
@@ -57,6 +58,14 @@ vectors /= np.maximum(
     np.linalg.norm(vectors, axis=1, keepdims=True),
     1e-12
 )
+
+# ---------------- Reranker model ----------------
+
+RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+
+print("Loading reranker model...")
+reranker = CrossEncoder(RERANKER_MODEL)
+print("Reranker model loaded.")
 
 
 # ---------------- Retrieval ----------------
@@ -116,8 +125,33 @@ Question: {question}
     return answer, elapsed
 
 
-def answer_rag(question):
-    results = retrieve(question, top_k=3)
+
+def answer_rag(question, use_reranker=False):
+    # Standard RAG retrieves 3 chunks.
+    # Reranked RAG retrieves 10 candidates, reranks them,
+    # and then selects the top 3.
+    if use_reranker:
+        candidates = retrieve(question, top_k=10)
+
+        pairs = [
+            (question, item["text"])
+            for item, score in candidates
+        ]
+
+        rerank_scores = reranker.predict(pairs)
+
+        ranked = sorted(
+            zip(candidates, rerank_scores),
+            key=lambda x: float(x[1]),
+            reverse=True
+        )
+
+        results = [
+            (item, float(score))
+            for (item, original_score), score in ranked[:3]
+        ]
+    else:
+        results = retrieve(question, top_k=3)
 
     evidence = "\n\n".join(
         f"Source: {item['source']}\n{item['text']}"
@@ -125,21 +159,21 @@ def answer_rag(question):
     )
 
     prompt = f"""
-    Answer only using the evidence below.
-    State the fault ID, variable description and fault type
-    when provided.
-    Copy the variable description faithfully from the evidence.
-    Do not omit qualifiers, conditions, stream numbers,
-    or other details that are part of the variable description.
-    Do not invent a fault type or physical cause.
-    If the evidence does not specify a detail, say so.
-    Cite the source filename.
+Answer only using the evidence below.
+State the fault ID, variable description and fault type
+when provided.
+Copy the variable description faithfully from the evidence.
+Do not omit qualifiers, conditions, stream numbers,
+or other details that are part of the variable description.
+Do not invent a fault type or physical cause.
+If the evidence does not specify a detail, say so.
+Cite the source filename.
 
-    Evidence:
-    {evidence}
+Evidence:
+{evidence}
 
-    Question: {question}
-    """
+Question: {question}
+"""
 
     start = time.perf_counter()
     answer = call_llm(prompt)
@@ -148,6 +182,7 @@ def answer_rag(question):
     sources = "; ".join(
         sorted(set(item["source"] for item, score in results))
     )
+
     retrieved_text = "\n".join(
         item["text"] for item, score in results
     )
@@ -276,7 +311,13 @@ for fault_id, question, expected_terms, answer_known in tests:
     print(f"\nEvaluating IDV{fault_id}...")
 
     baseline, baseline_time = answer_baseline(question)
-    rag, rag_time, sources, retrieved_text = answer_rag(question)
+    rag, rag_time, sources, retrieved_text = answer_rag(
+        question, use_reranker=False
+    )
+
+    rerank_answer, rerank_time, rerank_sources, rerank_text = answer_rag(
+        question, use_reranker=True
+    )
 
     baseline_norm = normalize(baseline)
     rag_norm = normalize(rag)
@@ -346,6 +387,46 @@ for fault_id, question, expected_terms, answer_known in tests:
     # Keep the original evaluation column for compatibility.
     rag_score = answer_correctness_match
 
+    # Reranked RAG metrics
+    rerank_norm = normalize(rerank_answer)
+
+    rerank_terms_found = terms_match(
+        rerank_answer, expected_terms
+    )
+
+    rerank_evidence_terms_found = terms_match(
+        rerank_text, expected_terms
+    )
+
+    if not answer_known:
+        rerank_abstains = any(
+            marker in rerank_norm
+            for marker in unknown_markers
+        )
+        rerank_correctness = int(
+            rerank_abstains and rerank_evidence_terms_found
+        )
+    else:
+        rerank_correctness = int(rerank_terms_found)
+
+    rerank_answer_terms = [
+        term for term in expected_terms
+        if contains_term(rerank_answer, term)
+    ]
+
+    rerank_unsupported_terms = [
+        term for term in rerank_answer_terms
+        if not contains_term(rerank_text, term)
+    ]
+
+    if rerank_answer_terms:
+        rerank_faithfulness = int(
+            len(rerank_unsupported_terms) == 0
+        )
+    else:
+        rerank_faithfulness = ""
+
+
     rows.append({
         "fault_id": fault_id,
         "question": question,
@@ -363,16 +444,26 @@ for fault_id, question, expected_terms, answer_known in tests:
         "retrieval_hit": retrieval_hit,
         "answer_correctness_match": answer_correctness_match,
         "faithfulness_proxy": faithfulness_proxy,
+        "rerank_answer": rerank_answer,
+        "rerank_latency_seconds": round(rerank_time, 3),
+        "rerank_sources": rerank_sources,
+        "rerank_retrieved_text": rerank_text,
+        "rerank_retrieval_hit": int(rerank_evidence_terms_found),
+        "rerank_answer_correctness": rerank_correctness,
+        "rerank_faithfulness_proxy": rerank_faithfulness,
     })
 
     print("Baseline:", baseline)
     print("RAG:", rag)
     print("RAG match:", rag_score)
+    print("Reranked RAG:", rerank_answer)
 
 
 fieldnames = list(rows[0].keys())
 
-with OUTPUT_CSV.open("w", newline="", encoding="utf-8-sig") as f:
+with RERANK_OUTPUT_CSV.open(
+    "w", newline="", encoding="utf-8-sig"
+) as f:
     writer = csv.DictWriter(f, fieldnames=fieldnames)
     writer.writeheader()
     writer.writerows(rows)
@@ -392,6 +483,42 @@ def metric_rate(items, key):
         if r[key] != ""
     ]
     return round(sum(valid) / len(valid), 3) if valid else None
+
+print(
+    "Standard RAG correctness:",
+    metric_rate(known_rows, "answer_correctness_match")
+)
+
+print(
+    "Reranked RAG correctness:",
+    metric_rate(known_rows, "rerank_answer_correctness")
+)
+
+print(
+    "Standard RAG faithfulness proxy:",
+    metric_rate(rows, "faithfulness_proxy")
+)
+
+print(
+    "Reranked RAG faithfulness proxy:",
+    metric_rate(rows, "rerank_faithfulness_proxy")
+)
+
+print(
+    "Standard RAG latency (seconds):",
+    round(
+        sum(r["rag_latency_seconds"] for r in rows) / len(rows),
+        3
+    )
+)
+
+print(
+    "Reranked RAG latency (seconds):",
+    round(
+        sum(r["rerank_latency_seconds"] for r in rows) / len(rows),
+        3
+    )
+)
 
 print("\n" + "=" * 55)
 print("EVALUATION SUMMARY")
@@ -425,5 +552,7 @@ print(
     "RAG faithfulness proxy:",
     metric_rate(rows, "faithfulness_proxy")
 )
-
-print("Results saved to:", OUTPUT_CSV)
+RERANK_OUTPUT_CSV = (
+    PROJECT_DIR / "rag_reranking_evaluation_results.csv"
+)
+print("Reranking results saved to:", RERANK_OUTPUT_CSV)
